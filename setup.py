@@ -11,5 +11,5 @@ setup(
     packages=find_packages(),
     package_data={},
     install_requires=[],
-    extras_require=[],
+    extras_require={},
 )
