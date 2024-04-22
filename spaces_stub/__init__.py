@@ -29,6 +29,8 @@ def run():
     if not GITHUB_TOKEN:
         raise KeyError('No GITHUB_TOKEN set.')
 
+    print(f'Installing module {MODULE_NAME}...')
+
     URL = f'git+https://{GITHUB_TOKEN}@github.com/fmtr/{MODULE_NAME}.git'
 
     stdout, stderr = install_package(URL)
