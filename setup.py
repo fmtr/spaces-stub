@@ -1,8 +1,6 @@
 import os
 from setuptools import find_packages, setup
 
-raise ValueError(f'{os.environ=}')
-
 setup(
     name='spaces_stub',
     version=f'0.0.1',
