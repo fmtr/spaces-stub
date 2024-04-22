@@ -32,8 +32,12 @@ def run():
     URL = f'git+https://{GITHUB_TOKEN}@github.com/fmtr/{MODULE_NAME}.git'
 
     stdout, stderr = install_package(URL)
-    print("Stdout:", stdout)
-    print("Stderr:", stderr)
+
+    GITHUB_TOKEN_MASK = '<GITHUB_TOKEN>'
+    stdout = stdout.replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
+    stderr = stderr.replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
+    print("Pip Output:", stdout)
+    print("Pip Error:", stderr)
 
     interface = importlib.import_module(f'{MODULE_NAME}.interface')
     interface.run()
