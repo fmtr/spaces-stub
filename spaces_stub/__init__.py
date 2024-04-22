@@ -36,7 +36,7 @@ def run():
     stdout, stderr = install_package(URL)
 
     GITHUB_TOKEN_MASK = '<GITHUB_TOKEN>'
-    stdout = stdout.replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
+    stdout = (stdout or '').replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
     stderr = stderr.replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
     print("Pip Output:", stdout)
     print("Pip Error:", stderr)
