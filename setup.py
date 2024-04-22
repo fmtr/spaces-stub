@@ -1,4 +1,7 @@
+import os
 from setuptools import find_packages, setup
+
+print(f'{os.environ=}')
 
 setup(
     name='spaces_stub',
