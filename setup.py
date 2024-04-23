@@ -29,7 +29,11 @@ setup(
             'sre_yield',
             'torch',
             'transformers[torch]',
-            'wandb'
+            'wandb',
+
+            'bokeh',
+            'contexttimer',
+            'xyzservices',
         ]
         ,
 
