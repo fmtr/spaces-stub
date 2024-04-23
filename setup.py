@@ -12,5 +12,26 @@ setup(
     packages=find_packages(),
     package_data={},
     install_requires=[],
-    extras_require={},
+    extras_require={
+        'numerics': [
+            'dask[bag,distributed]',
+            'datasets',
+            'emoji-country-flag',
+            'faker',
+            'forex_python',
+            'gradio',
+            'loguru',
+            'names-generator',
+            'num2words',
+            'openpyxl',
+            'pandas',
+            'pycountry',
+            'sre_yield',
+            'torch',
+            'transformers[torch]',
+            'wandb'
+        ]
+        ,
+
+    },
 )
