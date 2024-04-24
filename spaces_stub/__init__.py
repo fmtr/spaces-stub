@@ -4,13 +4,10 @@ import sys
 
 def install_package(url):
     try:
-        # Redirect stdout and stderr to PIPE
         result = subprocess.run([sys.executable, '-m', 'pip', 'install', url], stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
-        # Capture stdout and stderr
         stdout = result.stdout.decode('utf-8')
         stderr = result.stderr.decode('utf-8')
-        # Return the captured output
         return stdout, stderr
     except Exception as e:
         return None, str(e)
@@ -35,7 +32,7 @@ def run():
 
     stdout, stderr = install_package(URL)
 
-    GITHUB_TOKEN_MASK = '<GITHUB_TOKEN>'
+    GITHUB_TOKEN_MASK = '****'
     stdout = (stdout or '').replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
     stderr = stderr.replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
     print("Pip Output:", stdout)
