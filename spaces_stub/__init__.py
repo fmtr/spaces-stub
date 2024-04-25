@@ -1,5 +1,9 @@
+import importlib
+import logging
+import pip
 import subprocess
 import sys
+from os import getenv
 
 
 def install_package(url):
@@ -14,9 +18,8 @@ def install_package(url):
 
 
 def run():
-    import importlib
-    from os import getenv
-    import pip
+    FMTR_LOG_LEVEL = getenv('FMTR_LOG_LEVEL', 'INFO')
+    logging.getLogger().setLevel(FMTR_LOG_LEVEL)
 
     MODULE_NAME = getenv('PACKAGE_NAME')
     if not MODULE_NAME:
@@ -26,7 +29,7 @@ def run():
     if not GITHUB_TOKEN:
         raise KeyError('No GITHUB_TOKEN set.')
 
-    print(f'Installing module {MODULE_NAME}...')
+    print(f'Starting {MODULE_NAME}...')
 
     URL = f'git+https://{GITHUB_TOKEN}@github.com/fmtr/{MODULE_NAME}.git'
 
@@ -35,8 +38,9 @@ def run():
     GITHUB_TOKEN_MASK = '****'
     stdout = (stdout or '').replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
     stderr = stderr.replace(GITHUB_TOKEN, GITHUB_TOKEN_MASK)
-    print("Pip Output:", stdout)
-    print("Pip Error:", stderr)
+
+    logging.debug(f"Pip Output:\n{stdout}")
+    logging.debug(f"Pip Error:\n{stderr}")
 
     interface = importlib.import_module(f'{MODULE_NAME}.interface')
     interface.run()
