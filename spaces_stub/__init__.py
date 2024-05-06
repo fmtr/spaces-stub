@@ -4,6 +4,7 @@ import pip
 import subprocess
 import sys
 from os import getenv
+from pathlib import Path
 
 
 def install_package(url):
@@ -41,6 +42,7 @@ def run():
 
     logging.debug(f"Pip Output:\n{stdout}")
     logging.debug(f"Pip Error:\n{stderr}")
+    logging.debug(f"Pip Freeze:\n{Path('/tmp/freeze.txt').read_text()}")
 
     interface = importlib.import_module(f'{MODULE_NAME}.interface')
     interface.run()
