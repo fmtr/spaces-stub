@@ -1,4 +1,3 @@
-import os
 from setuptools import find_packages, setup
 
 setup(
@@ -14,6 +13,8 @@ setup(
     install_requires=[],
     extras_require={
         'numerics': [
+            'fmtr.tools[logging,profiling,parallel]',
+
             'dask[bag,distributed]',
             'datasets',
             'emoji-country-flag',
