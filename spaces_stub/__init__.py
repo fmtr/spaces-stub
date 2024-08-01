@@ -42,7 +42,7 @@ def run():
     print(f'Starting {MODULE_NAME}...')
 
     subprocess.run(
-        [sys.executable, '-m', 'pip', 'install', MODULE_NAME, '--no-input', f'--index-url http://{PIP_INDEX_URL}'])
+        [sys.executable, '-m', 'pip', 'install', MODULE_NAME, '--no-input', f'--index-url https://{PIP_INDEX_URL}'])
 
     # logging.debug(f"Pip Output:\n{stdout}")
     # logging.debug(f"Pip Error:\n{stderr}")
