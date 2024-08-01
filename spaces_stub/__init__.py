@@ -8,7 +8,7 @@ import subprocess
 
 def install_package(name):
     try:
-        result = subprocess.run([sys.executable, '-m', 'pip', 'install', name])
+        result = subprocess.run([sys.executable, '-m', 'pip', 'install', name, '--no-input'])
         stdout = result.stdout.decode('utf-8')
         stderr = result.stderr.decode('utf-8')
         return stdout, stderr
